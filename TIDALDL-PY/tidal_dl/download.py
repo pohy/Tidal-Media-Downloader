@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from decryption import *
 from printf import *
 from tidal import *
+from mutagen import flac
 
 
 def __isSkip__(finalpath, url):
@@ -49,7 +50,12 @@ def __parseContributors__(roleType, Contributors):
 
 
 def __setMetaData__(track: Track, album: Album, filepath, contributors, lyrics):
-    obj = aigpy.tag.TagTool(filepath)
+    try:
+        obj = aigpy.tag.TagTool(filepath)
+    except:
+        __fixFileWithFFmpeg__(filepath)
+        obj = aigpy.tag.TagTool(filepath)
+
     obj.album = track.album.title
     obj.title = track.title
     if not aigpy.string.isNull(track.version):
@@ -70,6 +76,43 @@ def __setMetaData__(track: Track, album: Album, filepath, contributors, lyrics):
         obj.totaltrack = album.numberOfTracks
     coverpath = TIDAL_API.getCoverUrl(album.cover, "1280", "1280")
     obj.save(coverpath)
+
+
+def __fixFileWithFFmpeg__(filepath):
+    try:
+        import os
+        import shutil
+        import tempfile
+        from ffmpeg import FFmpeg, Progress
+        
+        # Create temporary output file
+        temp_fd, temp_path = tempfile.mkstemp(suffix=os.path.splitext(filepath)[1])
+        os.close(temp_fd)
+        
+        try:
+            ffmpeg = FFmpeg().option('y').input(filepath).output(temp_path)
+
+            @ffmpeg.on('start')
+            def on_start(arguments: list[str]):
+                Printf.info(f"Fixing file with FFmpeg: arguments: {arguments}")
+
+            @ffmpeg.on('progress')
+            def on_progress(progress: Progress):
+                Printf.info(f"Fixing file with FFmpeg: progress: {progress}")
+
+            ffmpeg.execute()
+            
+            # Replace original with fixed file (handle cross-drive moves on Windows)
+            shutil.move(temp_path, filepath)
+            return True
+        finally:
+            # Clean up temp file if it still exists
+            if os.path.exists(temp_path):
+                os.unlink(temp_path)
+                
+    except Exception as e:
+        Printf.err(f"Failed to fix file with FFmpeg: {str(e)}")
+        return False
 
 
 def downloadCover(album):
@@ -188,6 +231,7 @@ def downloadTrack(track: Track, album=None, playlist=None, userProgress=None, pa
 
         return True, ''
     except Exception as e:
+        # TODO: Invalid FLAC file
         Printf.err(f"DL Track '{track.title}' failed: {str(e)}")
         return False, str(e)
 

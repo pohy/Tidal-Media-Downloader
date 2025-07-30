@@ -80,7 +80,7 @@ def getAlbumPath(album):
     retpath = retpath.replace(R"{RecordType}", album.type)
     retpath = retpath.replace(R"{None}", "")
     retpath = retpath.strip()
-    return f"{SETTINGS.downloadPath}/{retpath}"
+    return os.path.join(SETTINGS.downloadPath, retpath)
 
 def getPlaylistPath(playlist):
     playlistName = __fixPath__(playlist.title)
@@ -91,7 +91,7 @@ def getPlaylistPath(playlist):
         retpath = SETTINGS.getDefaultPlaylistFolderFormat()
     retpath = retpath.replace(R"{PlaylistUUID}", str(playlist.uuid))
     retpath = retpath.replace(R"{PlaylistName}", playlistName)
-    return f"{SETTINGS.downloadPath}/{retpath}"
+    return os.path.join(SETTINGS.downloadPath, retpath)
 
 
 def getTrackPath(track, stream, album=None, playlist=None):
@@ -100,7 +100,7 @@ def getTrackPath(track, stream, album=None, playlist=None):
     if album is not None:
         base = getAlbumPath(album)
         if album.numberOfVolumes > 1:
-            base += f'/CD{str(track.volumeNumber)}'
+            base = os.path.join(base, f'CD{str(track.volumeNumber)}')
 
     if playlist is not None and SETTINGS.usePlaylistFolder:
         base = getPlaylistPath(playlist)
@@ -140,11 +140,11 @@ def getTrackPath(track, stream, album=None, playlist=None):
     retpath = retpath.replace(R"{Duration}", __getDurationStr__(track.duration))
     retpath = retpath.replace(R"{TrackID}", str(track.id))
     retpath = retpath.strip()
-    return f"{base}/{retpath}{extension}"
+    return os.path.join(base, f"{retpath}{extension}")
 
 
 def getVideoPath(video, album=None, playlist=None):
-    base = SETTINGS.downloadPath + '/Video/'
+    base = os.path.join(SETTINGS.downloadPath, 'Video')
     if album is not None and album.title is not None:
         base = getAlbumPath(album)
     elif playlist is not None:
@@ -176,7 +176,7 @@ def getVideoPath(video, album=None, playlist=None):
     retpath = retpath.replace(R"{VideoYear}", year)
     retpath = retpath.replace(R"{VideoID}", str(video.id))
     retpath = retpath.strip()
-    return f"{base}/{retpath}{extension}"
+    return os.path.join(base, f"{retpath}{extension}")
 
 
 def __getHomePath__():
@@ -190,10 +190,10 @@ def __getHomePath__():
         return os.path.abspath("./")
 
 def getLogPath():
-    return __getHomePath__() + '/.tidal-dl.log'
+    return os.path.join(__getHomePath__(), '.tidal-dl.log')
 
 def getTokenPath():
-    return __getHomePath__() + '/.tidal-dl.token.json'
+    return os.path.join(__getHomePath__(), '.tidal-dl.token.json')
 
 def getProfilePath():
-    return __getHomePath__() + '/.tidal-dl.json'
+    return os.path.join(__getHomePath__(), '.tidal-dl.json')

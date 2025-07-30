@@ -116,6 +116,8 @@ def main():
 
 
 def test():
+    import os
+
     SETTINGS.read(getProfilePath())
     TOKEN.read(getTokenPath())
 
@@ -132,10 +134,10 @@ def test():
     SETTINGS.showTrackInfo = True
     SETTINGS.saveAlbumInfo = True
     SETTINGS.downloadVideos = True
-    SETTINGS.downloadPath = "./download/"
+    SETTINGS.downloadPath = os.path.join('download')
     SETTINGS.usePlaylistFolder = True
-    SETTINGS.albumFolderFormat = R"{ArtistName}/{Flag} {AlbumTitle} [{AlbumID}] [{AlbumYear}]"
-    SETTINGS.playlistFolderFormat = R"Playlist/{PlaylistName} [{PlaylistUUID}]"
+    SETTINGS.albumFolderFormat = os.path.join(R"{ArtistName}", R"{Flag} {AlbumTitle} [{AlbumID}] [{AlbumYear}]")
+    SETTINGS.playlistFolderFormat = os.path.join(R"Playlist", R"{PlaylistName} [{PlaylistUUID}]")
     SETTINGS.trackFileFormat = R"{TrackNumber} - {ArtistName} - {TrackTitle}{ExplicitFlag}"
     SETTINGS.videoFileFormat = R"{VideoNumber} - {ArtistName} - {VideoTitle}{ExplicitFlag}"
     SETTINGS.multiThread = False
@@ -145,10 +147,11 @@ def test():
     Printf.settings()
 
     TIDAL_API.getPlaylistSelf()
+    start('https://tidal.com/browse/album/358157426?u')
     # test example
     # https://tidal.com/browse/track/70973230
     # track 70973230  77798028 212657
-    start('242700165')
+    # start('242700165')
     # album 58138532  77803199  21993753   79151897  56288918
     # start('58138532')
     # playlist 98235845-13e8-43b4-94e2-d9f8e603cee7
@@ -158,5 +161,5 @@ def test():
 
 
 if __name__ == '__main__':
-    # test()
-    main()
+    test()
+    # main()
