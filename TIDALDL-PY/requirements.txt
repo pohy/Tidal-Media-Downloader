@@ -10,3 +10,5 @@ pydub==0.25.1
 PyQt5==5.15.7
 qt-material==2.12
 python-ffmpeg==2.0.12
+wheel
+pyinstaller

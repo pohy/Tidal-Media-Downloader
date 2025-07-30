@@ -4,7 +4,6 @@
 
 ![Tidal-Media-Downloader](https://socialify.git.ci/yaronzz/Tidal-Media-Downloader/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark)
 
-
 <div align="center">
   <h1>Tidal-Media-Downloader</h1>
   <a href="https://github.com/yaronzz/Tidal-Media-Downloader/blob/master/LICENSE">
@@ -35,7 +34,7 @@
     <br>
 </p>
 
-## 📺 Installation 
+## 📺 Installation
 
 ```shell
 pip3 install tidal-dl --upgrade
@@ -52,13 +51,14 @@ If you are using windows system, you can use [tidal-pro](https://github.com/yaro
 
 ### Nightly Builds
 
-|Download nightly builds from continuous integration: 	| [![Build Status][Build]][Actions] 
-|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Download nightly builds from continuous integration: | [![Build Status][Build]][Actions] |
+| ---------------------------------------------------- | --------------------------------- |
 
 [Actions]: https://github.com/yaronzz/Tidal-Media-Downloader/actions
 [Build]: https://github.com/yaronzz/Tidal-Media-Downloader/workflows/Tidal%20Media%20Downloader/badge.svg
 
 ## 🤖 Features
+
 - Download album \ track \ video \ playlist \ artist-albums
 
 - Add metadata to songs
@@ -77,23 +77,23 @@ If you are using windows system, you can use [tidal-pro](https://github.com/yaro
 
 ### Album
 
-| Tag               | Example value                        |
-| ----------------- | ------------------------------------ |
-| {ArtistName}      | The Beatles                          |
-| {AlbumArtistName} | The Beatles                          |
-| {Flag}            | M/A/E  (Master/Dolby Atmos/Explicit) |
-| {AlbumID}         | 55163243                             |
-| {AlbumYear}       | 1963                                 |
-| {AlbumTitle}      | Please Please Me (Remastered)        |
-| {AudioQuality}    | LOSSLESS                             |
-| {DurationSeconds} | 1919                                 |
-| {Duration}        | 31:59                                |
-| {NumberOfTracks}  | 14                                   |
-| {NumberOfVideos}  | 0                                    |
-| {NumberOfVolumes} | 1                                    |
-| {ReleaseDate}     | 1963-03-22                           |
-| {RecordType}      | ALBUM                                |
-| {None}            |                                      |
+| Tag               | Example value                       |
+| ----------------- | ----------------------------------- |
+| {ArtistName}      | The Beatles                         |
+| {AlbumArtistName} | The Beatles                         |
+| {Flag}            | M/A/E (Master/Dolby Atmos/Explicit) |
+| {AlbumID}         | 55163243                            |
+| {AlbumYear}       | 1963                                |
+| {AlbumTitle}      | Please Please Me (Remastered)       |
+| {AudioQuality}    | LOSSLESS                            |
+| {DurationSeconds} | 1919                                |
+| {Duration}        | 31:59                               |
+| {NumberOfTracks}  | 14                                  |
+| {NumberOfVideos}  | 0                                   |
+| {NumberOfVolumes} | 1                                   |
+| {ReleaseDate}     | 1963-03-22                          |
+| {RecordType}      | ALBUM                               |
+| {None}            |                                     |
 
 ### Track
 
@@ -103,7 +103,7 @@ If you are using windows system, you can use [tidal-pro](https://github.com/yaro
 | {ArtistName}      | The Beatles                                |
 | {ArtistsName}     | The Beatles                                |
 | {TrackTitle}      | I Saw Her Standing There (Remastered 2009) |
-| {ExplicitFlag}    | (*Explicit*)                               |
+| {ExplicitFlag}    | (_Explicit_)                               |
 | {AlbumYear}       | 1963                                       |
 | {AlbumTitle}      | Please Please Me (Remastered)              |
 | {AudioQuality}    | LOSSLESS                                   |
@@ -113,24 +113,25 @@ If you are using windows system, you can use [tidal-pro](https://github.com/yaro
 
 ### Video
 
-| Tag               | Example Value                              |
-| ----------------- | ------------------------------------------ |
-| {VideoNumber}     | 00                                         |
-| {ArtistName}      | DMX                                        |
-| {ArtistsName}     | DMX, Westside Gunn                         |
-| {VideoTitle}      | Hood Blues                                 |
-| {ExplicitFlag}    | (*Explicit*)                               |
-| {VideoYear}       | 2021                                       |
-| {TrackID}         | 188932980                                  |
+| Tag            | Example Value      |
+| -------------- | ------------------ |
+| {VideoNumber}  | 00                 |
+| {ArtistName}   | DMX                |
+| {ArtistsName}  | DMX, Westside Gunn |
+| {VideoTitle}   | Hood Blues         |
+| {ExplicitFlag} | (_Explicit_)       |
+| {VideoYear}    | 2021               |
+| {TrackID}      | 188932980          |
 
 ## ☕ Support
 
-If you really like my projects and want to support me, you can buy me a coffee and star this project. 
+If you really like my projects and want to support me, you can buy me a coffee and star this project.
 
 <a href="https://www.buymeacoffee.com/yaronzz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/arial-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
 ## 🎂 Contributors
-This project exists thanks to all the people who contribute. 
+
+This project exists thanks to all the people who contribute.
 
 <a href="https://github.com/yaronzz/Tidal-Media-Downloader/graphs/contributors"><img src="https://contributors-img.web.app/image?repo=yaronzz/Tidal-Media-Downloader" /></a>
 
@@ -142,16 +143,88 @@ This project exists thanks to all the people who contribute.
 - [tidal-wiki](https://github.com/Fokka-Engineering/TIDAL/wiki)
 
 ## 📜 Disclaimer
+
 - Private use only.
-- Need a Tidal-HIFI subscription. 
+- Need a Tidal-HIFI subscription.
 - You should not use this method to distribute or pirate music.
 - It may be illegal to use this in your country, so be informed.
 
-## Developing
+## 🔧 Building from Source
+
+### Prerequisites
+
+- Python 3.7 or higher
+- Git
+
+### Setup Virtual Environment
+
+1. **Clone the repository:**
+
+   ```shell
+   git clone https://github.com/yaronzz/Tidal-Media-Downloader.git
+   cd Tidal-Media-Downloader
+   ```
+
+2. **Create and activate virtual environment:**
+
+   **Windows:**
+
+   ```shell
+   python -m venv .venv --prompt tidal-dl
+   .venv\Scripts\activate
+   ```
+
+   **Linux/macOS:**
+
+   ```shell
+   python3 -m venv .venv --prompt tidal-dl
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```shell
+   pip install -r TIDALDL-PY/requirements.txt
+   ```
+
+### Build Executable
+
+The project includes an automated build script that handles virtual environment detection, dependency installation, and executable creation:
 
 ```shell
-pip3 uninstall tidal-dl
-pip3 install -r requirements.txt --user
-python3 setup.py install
+python build.py
 ```
 
+**What the build script does:**
+
+- ✅ Automatically detects and uses virtual environment
+- ✅ Installs required build tools (wheel, pyinstaller)
+- ✅ Sets up correct Python paths for imports
+- ✅ Creates Python package (sdist & wheel)
+- ✅ Generates standalone executable with PyInstaller
+- ✅ Places final executable in `TIDALDL-PY/exe/tidal-dl.exe`
+
+**Manual Build Steps** (if needed):
+
+```shell
+cd TIDALDL-PY
+python setup.py sdist bdist_wheel
+python -m PyInstaller -F tidal_dl/__init__.py
+```
+
+### Development Setup
+
+For development and testing:
+
+```shell
+# Activate virtual environment first
+.venv\Scripts\activate  # Windows
+# or
+source .venv/bin/activate  # Linux/macOS
+
+# Install in development mode
+cd TIDALDL-PY
+pip install -e .
+
+# Run directly
+python -m tidal_dl
+```
